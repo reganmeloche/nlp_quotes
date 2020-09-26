@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "fb3ea661-1b17-4189-b29e-db8df50078d2",
+		"name": "nlp_quotes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Random Quote",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "85bda1f1-95c4-42ed-8218-05f02d379d54",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b1cee4ee-b9f9-4039-bdb9-bb5cc810da46",
+						"exec": [
+							"pm.environment.set(\"quote_text\", pm.response.json().quote_text);\r",
+							"\r",
+							"pm.environment.set(\"author\", pm.response.json().author);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/random",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rate quote",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quote_text\": \"{{quote_text}}\",\r\n    \"author\": \"{{author}}\",\r\n    \"rating\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/rate?user_id={{user_id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"rate"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "{{user_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Train",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "85bda1f1-95c4-42ed-8218-05f02d379d54",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b1cee4ee-b9f9-4039-bdb9-bb5cc810da46",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/train?user_id={{user_id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"train"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "{{user_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Predict",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9c91717f-a29f-41e9-89a3-39aa7e6e246e",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "f26d7813-abd0-40dd-8e24-1a5a94b071da",
+						"exec": [
+							"pm.environment.set(\"quote_text\", pm.response.json().quote.quote_text);\r",
+							"\r",
+							"pm.environment.set(\"author\", pm.response.json().quote.author);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/predict?user_id={{user_id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"predict"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "{{user_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
