@@ -16,9 +16,9 @@ This is a project that uses Natural Language Processing techniques to predict qu
 }
 ```
 
-- `/train`: Train a model using the list of quotes liked and disliked by a user
+- `GET /train`: Train a model using the list of quotes liked and disliked by a user
 
-- `/predict`: Get a prediction on another randomly generated quote
+- `GET /predict`: Get a prediction on another randomly generated quote
 
 *** At this point, the predict, train, and rate endpoints must be called with a user_id query parameter
 
@@ -37,3 +37,9 @@ This is a project that uses Natural Language Processing techniques to predict qu
 ### Sources
 - Modeled off of examples in this book: https://www.manning.com/books/getting-started-with-natural-language-processing
 - For extracting random quotes from wikiquote: https://codepen.io/Eatcake/pen/ggxYeN?editors=1010
+- spacy source: https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.2.0/en_core_web_sm-2.2.0.tar.gz#egg=en_core_web_sm
+
+
+### Other notes
+- Virtual env: . env/Scripts/activate ... deactivate
+- Installing packages: pip3 install lxml && pip freeze > requirements.txt
